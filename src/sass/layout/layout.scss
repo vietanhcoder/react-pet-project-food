@@ -1,0 +1,164 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+* {
+  outline: none !important;
+  box-sizing: border-box !important;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-weight: 300;
+  font-family: 'Source Sans Pro', 'PT Serif', 'Roboto';
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: black;
+  background: #d3d3d3;
+
+  &.disable-scroll .body-wrapper {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  font-size: 3.5rem;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+}
+
+p {
+  margin: 0 0 0.5rem 0;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #1f3971;
+  font-size: 1.2rem;
+}
+
+.parallax-line-box {
+  margin-top: 2rem;
+}
+
+.parallax-switch-box {
+  margin-top: 4rem;
+}
+
+.error {
+  border-color: red !important;
+  background: rgba(187, 15, 36, 0.1) !important;
+}
+
+.error-message {
+  color: #bb0f24 !important;
+  font-style: italic;
+}
+
+.body-wrapper {
+  overflow: hidden;
+}
+
+.is-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.is-off {
+  display: none !important;
+}
+
+.container {
+
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  width: 100%;
+
+  /* max-width: $width-page; */
+  margin: 0 auto;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  position: relative;
+  z-index: 1;
+
+  /* max-width: 300px; */
+
+  .info {
+    margin: 50px auto;
+    text-align: center;
+
+    h1 {
+      margin: 0 0 15px;
+      padding: 0;
+      font-size: 36px;
+      font-weight: 300;
+      color: #1a1a1a;
+    }
+
+    span {
+      color: #4d4d4d;
+      font-size: 12px;
+
+      a {
+        color: #000000;
+        text-decoration: none;
+      }
+
+      .fa {
+        color: #EF3B3A;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.list-page {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  background-color: white;
+  margin-bottom: 20px;
+
+  li {
+    margin-top: 20px;
+
+    a {
+      font-size: 20px;
+    }
+  }
+}

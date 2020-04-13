@@ -1,9 +1,24 @@
-import React from 'react';
-import './sass/style.scss'
+import React from "react";
+import "./sass/style.scss";
+
+import {
+  // ChangePass,
+  // Dashboard,
+  // ForgetPass,
+  LoginPage,
+  // Profile,
+  // ResetPassword,
+} from "./feature";
+
 function App() {
   return (
     <div className="App">
-      <h1>this is app page</h1>
+      <LoginPage />
+      {/* <ChangePass />
+      <ForgetPass />
+      <Dashboard />
+      <Profile />
+      <ResetPassword /> */}
     </div>
   );
 }
