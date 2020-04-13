@@ -1,0 +1,17 @@
+{
+  "users": {
+    "email": "vietanh@gmail.com",
+    "password": "123",
+    "firstname": "anh",
+    "lastname": "em"
+  },
+  "products": [{
+    "id": 1,
+    "title": "iphone4",
+    "description": "apple",
+    "status": false,
+    "price": 1232,
+    "supplier": "apple"
+  }]
+
+}

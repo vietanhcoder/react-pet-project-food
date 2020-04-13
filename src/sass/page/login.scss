@@ -14,3 +14,23 @@
   background: linear-gradient(to left, #76b852, #8DC26F);
   height: 100vh;
 }
+
+.list-page {
+  display: flex;
+  justify-content: center;
+
+  li {
+    padding: 10px;
+    background: gray;
+    margin-left: 5px;
+    border-radius: 5px;
+
+    a {
+      color: white;
+
+      &:hover {
+        color: orange;
+      }
+    }
+  }
+}
