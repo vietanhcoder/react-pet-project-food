@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+// import actions
+import { setUser } from "../../redux/actions";
 
 // import { Link } from "react-router-dom";
-function Login(props) {
-  const [email, setEmail] = useState("");
+function Login(email, loading, error, props) {
+  // const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorsEmail, setErrorsEmail] = useState(false);
   const [errorsPassword, setErrorsPassword] = useState(false);
@@ -21,19 +24,19 @@ function Login(props) {
       setErrorsPassword(false);
     }
     if (errorsEmail === false && errorsPassword === false) {
-      props.history.push("/");
-    }
-  };
-  const handleOnChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "email") {
-      setEmail(value);
-    }
-    if (name === "password") {
-      setPassword(value);
+      // props.history.push("/");
     }
   };
 
+  const handleOnChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "email") {
+      setUser(value);
+    }
+    // if (name === "password") {
+    //   setPassword(value);
+    // }
+  };
   return (
     <div className="login-page-wrapper">
       <div className="login-page">
@@ -44,8 +47,8 @@ function Login(props) {
                 type="email"
                 name="email"
                 placeholder="Your email"
-                value={email}
-                onChange={handleOnChange}
+                // value={email}
+                onChange={(event) => handleOnChange(event)}
               />
               {errorsEmail && <p className="error">sai email</p>}
             </div>
@@ -57,9 +60,7 @@ function Login(props) {
                 value={password}
                 onChange={handleOnChange}
               />
-              {errorsPassword && (
-                <p className="error">sai con me may pass roi</p>
-              )}
+              {errorsPassword && <p className="error">sai passs</p>}
             </div>
             <button>Login</button>
             <div className="form-group box-remember">
@@ -82,4 +83,13 @@ function Login(props) {
   );
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  const { email } = state;
+  return {
+    email,
+  };
+};
+const mapDispatchToProps = {
+  setUser,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
