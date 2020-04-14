@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { createBrowserHistory } from "history";
@@ -6,9 +7,15 @@ import { useHistory } from "react-router-dom";
 import "./sass/style.scss";
 import routes from "./routes";
 
+import { setUser } from "./redux/actions";
+
 const loading = () => <div>Loading...</div>;
 
-const App = () => {
+const App = ({ setUser }) => {
+  const handleLogout = () => {
+    setUser("");
+  };
+
   return (
     <Router history={createBrowserHistory()}>
       <React.Suspense fallback={loading()}>
@@ -35,6 +42,9 @@ const App = () => {
             <li>
               <Link to="/reset-passwords">reset-passwords</Link>
             </li>
+            <li>
+              <span onClick={handleLogout}>logout</span>
+            </li>
           </ul>
           <p> this is app page</p>
 
@@ -56,4 +66,8 @@ const App = () => {
   );
 };
 
-export default App;
+const mapDispatchToProps = {
+  setUser,
+};
+
+export default connect(null, mapDispatchToProps)(App);

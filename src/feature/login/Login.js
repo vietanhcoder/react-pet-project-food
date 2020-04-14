@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import { setUser } from "../../redux/actions";
 
 // import { Link } from "react-router-dom";
-function Login(email, loading, error, props) {
-  // const [email, setEmail] = useState("");
+// object descturing
+function Login({ setUser }) {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorsEmail, setErrorsEmail] = useState(false);
   const [errorsPassword, setErrorsPassword] = useState(false);
@@ -13,25 +14,27 @@ function Login(email, loading, error, props) {
 
   const handleSubmitLogin = (event) => {
     event.preventDefault();
-    if (!patternEmail.test(email)) {
-      setErrorsEmail(true);
-    } else {
-      setErrorsEmail(false);
-    }
-    if (password === "") {
-      setErrorsPassword(true);
-    } else {
-      setErrorsPassword(false);
-    }
-    if (errorsEmail === false && errorsPassword === false) {
-      // props.history.push("/");
-    }
+    // if (!patternEmail.test(email)) {
+    //   setErrorsEmail(true);
+    // } else {
+    //   setErrorsEmail(false);
+    // }
+    // if (password === "") {
+    //   setErrorsPassword(true);
+    // } else {
+    //   setErrorsPassword(false);
+    // }
+    // if (errorsEmail === false && errorsPassword === false) {
+    //   // props.history.push("/");
+    // }
+    setUser(email);
   };
 
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     if (name === "email") {
-      setUser(value);
+      // setUser(value);
+      setEmail(value);
     }
     // if (name === "password") {
     //   setPassword(value);
