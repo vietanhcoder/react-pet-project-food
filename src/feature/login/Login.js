@@ -27,18 +27,17 @@ function Login({ setUser }) {
     // if (errorsEmail === false && errorsPassword === false) {
     //   // props.history.push("/");
     // }
-    setUser(email);
+    setUser(email, password);
   };
 
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     if (name === "email") {
-      // setUser(value);
       setEmail(value);
     }
-    // if (name === "password") {
-    //   setPassword(value);
-    // }
+    if (name === "password") {
+      setPassword(value);
+    }
   };
   return (
     <div className="login-page-wrapper">

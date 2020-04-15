@@ -1,6 +1,10 @@
 import { SET_USER } from "./types";
 
-export const setUser = (data) => ({
+export const setUser = (email, password) => ({
   type: SET_USER,
-  payload: data,
+  payload: {
+    id: Math.random(),
+    email,
+    password,
+  },
 });

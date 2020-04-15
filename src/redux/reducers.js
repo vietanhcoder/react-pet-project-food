@@ -1,7 +1,7 @@
 import { SET_USER } from "./types";
 
 const initialState = {
-  email: "",
+  data: "",
   loading: false,
   error: false,
 };
@@ -11,7 +11,7 @@ const reducers = (state = initialState, action) => {
     case SET_USER: {
       return {
         ...state,
-        email: action.payload,
+        data: [...state.data, action.payload],
       };
     }
     default:
