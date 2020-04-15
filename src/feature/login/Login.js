@@ -8,37 +8,64 @@ import { setUser } from "../../redux/actions";
 function Login({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorsEmail, setErrorsEmail] = useState(false);
-  const [errorsPassword, setErrorsPassword] = useState(false);
+  const [errors, setErrors] = useState({});
   const patternEmail = /^[a-z][a-z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/;
 
   const handleSubmitLogin = (event) => {
     event.preventDefault();
-    // if (!patternEmail.test(email)) {
-    //   setErrorsEmail(true);
-    // } else {
-    //   setErrorsEmail(false);
-    // }
-    // if (password === "") {
-    //   setErrorsPassword(true);
-    // } else {
-    //   setErrorsPassword(false);
-    // }
-    // if (errorsEmail === false && errorsPassword === false) {
-    //   // props.history.push("/");
-    // }
     setUser(email, password);
   };
+  // const handleErrors = (email, password) => {
+  //   let errors = {};
+
+  //   if (!email) {
+  //     errors.email = "email address is required";
+  //   } else if (!patternEmail.test(email)) {
+  //     errors.email = "email address is invalid";
+  //   }
+  //   if (!password) {
+  //     errors.password = "Password is required";
+  //   } else if (password.length < 3) {
+  //     errors.password = "Password needs to be more than 2 characters";
+  //   }
+  //   setErrors({ ...errors, errors });
+
+  //   return errors;
+  // };
 
   const handleOnChange = (event) => {
     const { name, value } = event.target;
+    let errors = {
+      emailErrors: "",
+      passErrors: "",
+    };
     if (name === "email") {
-      setEmail(value);
+      console.log(value);
+      if (!value) {
+        errors.emailErrors = "email address is required";
+      } else if (!patternEmail.test(email)) {
+        errors.emailErrors = "email address is invalid";
+      } else {
+        setErrors({});
+        setEmail(value);
+        console.log(value);
+      }
+      setErrors({ ...errors, errors });
+      console.log(errors.emailErrors);
+      return errors;
     }
-    if (name === "password") {
-      setPassword(value);
-    }
+    // if (name === "email") {
+    //   if (value !== "") {
+    //     setEmail(value);
+    //     console.log(value);
+    //   }
+    // }
+    // if (name === "password") {
+    //   setPassword(value);
+    // }
   };
+  // console.log(errors);
+
   return (
     <div className="login-page-wrapper">
       <div className="login-page">
@@ -52,7 +79,9 @@ function Login({ setUser }) {
                 // value={email}
                 onChange={(event) => handleOnChange(event)}
               />
-              {errorsEmail && <p className="error">sai email</p>}
+              {errors.emailErrors && (
+                <p className="error">{errors.emailErrors}</p>
+              )}
             </div>
             <div className="form-group">
               <input
@@ -62,7 +91,7 @@ function Login({ setUser }) {
                 value={password}
                 onChange={handleOnChange}
               />
-              {errorsPassword && <p className="error">sai passs</p>}
+              {/* {errorsPassword && <p className="error">sai passs</p>} */}
             </div>
             <button>Login</button>
             <div className="form-group box-remember">
